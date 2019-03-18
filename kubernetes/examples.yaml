@@ -1,0 +1,33 @@
+apiVersion: aad.microsoft.com/v1
+kind: AADGroupSync
+metadata:
+  name: administrators
+spec:
+  group:
+    name: "Administrators"
+    description: "Kubernetes cluster administrators"
+    objectId: "ca65a5de-3ca5-474a-8fc5-bee95dd3e335"
+    users:
+      - objectId: "2c82d51e-7686-4642-9fbd-9b4bf6165ed1"
+        userPrincipalName: "userthree@contoso.com"
+    userCount: 2
+  lastSyncDateTime: "2018-11-26T01:31:11Z"
+  lastSyncType: "Scheduled"
+---
+apiVersion: aad.microsoft.com/v1
+kind: AADGroupSync
+metadata:
+  name: developers
+spec:
+  group:
+    name: "Developers"
+    description: "Kubernetes developers"
+    objectId: "464e7cdd-b431-4e49-9aa7-8c6ef24c9dbc"
+    users:
+      - objectId: "2be08cda-26e2-487d-a987-a81c82bd93fa"
+        userPrincipalName: "userone@contoso.com"
+      - objectId: "ea50b990-b602-4aec-a67a-382938e63164"
+        userPrincipalName: "usertwo@contoso.com"
+    userCount: 2
+  lastSyncDateTime: "2018-11-26T01:31:11Z"
+  lastSyncType: "Scheduled"

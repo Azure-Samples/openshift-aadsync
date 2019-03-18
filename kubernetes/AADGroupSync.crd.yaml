@@ -1,0 +1,70 @@
+apiVersion: "apiextensions.k8s.io/v1beta1"
+kind: "CustomResourceDefinition"
+metadata:
+  name: "aadgroupsyncs.aad.microsoft.com"
+spec:
+  group: "aad.microsoft.com"
+  version: "v1"
+  scope: "Namespaced"
+  names:
+    kind: "AADGroupSync"    
+    singular: "aadgroupsync"
+    plural: "aadgroupsyncs"
+  validation:
+    openAPIV3Schema:
+      properties:
+        apiVersion:
+          type: string
+        kind:
+          type: string
+        spec:
+          properties:
+            group:
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                objectId:
+                  type: string
+                userCount:
+                  type: integer
+                users: 
+                  type: array
+                  items:
+                    properties:
+                      userPrincipalName:
+                        type: string
+                      objectId:
+                        type: string
+            lastSyncDateTime:
+              format: date-time
+              type: string
+            lastSyncType: 
+              type: string
+  additionalPrinterColumns:
+    - name: Group
+      type: string
+      priority: 0
+      JSONPath: .spec.group.name
+    - name: GroupObjectId
+      type: string
+      priority: 0
+      JSONPath: .spec.group.objectId
+    - name: Age
+      type: date
+      format: date-time
+      priority: 0
+      JSONPath: .metadata.creationTimestamp 
+    - name: LastSync
+      type: date
+      priority: 1
+      JSONPath: .spec.lastSyncDateTime 
+    - name: LastSyncType
+      type: string
+      priority: 2
+      JSONPath: .spec.lastSyncType
+    - name: Users
+      type: integer
+      priority: 3
+      JSONPath: .spec.group.userCount

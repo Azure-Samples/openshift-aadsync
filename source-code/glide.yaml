@@ -1,0 +1,20 @@
+package: .
+import:
+- package: k8s.io/apimachinery
+  subpackages:
+  - pkg/apis/meta/v1
+  - pkg/runtime
+  - pkg/runtime/schema
+- package: k8s.io/code-generator
+- package: golang.org/x/crypto
+- package: golang.org/x/net
+  subpackages:
+  - http/httpguts
+- package: github.com/gogo/protobuf
+- package: gopkg.in/inf.v0
+- package: golang.org/x/sys
+  subpackages:
+  - cpu
+- package: github.com/google/gofuzz
+- package: github.com/sirupsen/logrus
+  version: ^1.2.0

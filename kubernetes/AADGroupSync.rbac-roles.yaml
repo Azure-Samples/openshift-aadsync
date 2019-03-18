@@ -1,0 +1,21 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: aad:groupsync:admin
+  labels:
+    k8s-app: aad-groupsync-controller
+rules:
+- apiGroups: ["aad.microsoft.com"]
+  resources: ["aadgroupsyncs"]
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete", "deletecollection"]
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: aad:groupsync:reader
+  labels:
+    k8s-app: aad-groupsync-controller
+rules:
+- apiGroups: ["aad.microsoft.com"]
+  resources: ["aadgroupsyncs"]
+  verbs: ["get", "list", "watch"]
